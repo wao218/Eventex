@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F382C25BF8C390017F239 /* AppDelegate.swift */; };
 		2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F382E25BF8C390017F239 /* SceneDelegate.swift */; };
-		2B7F383125BF8C390017F239 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F383025BF8C390017F239 /* ViewController.swift */; };
+		2B7F383125BF8C390017F239 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F383025BF8C390017F239 /* EventViewController.swift */; };
 		2B7F383425BF8C390017F239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B7F383225BF8C390017F239 /* Main.storyboard */; };
 		2B7F383725BF8C390017F239 /* Eventex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F383525BF8C390017F239 /* Eventex.xcdatamodeld */; };
 		2B7F383925BF8C3C0017F239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B7F383825BF8C3C0017F239 /* Assets.xcassets */; };
@@ -39,7 +39,7 @@
 		2B7F382925BF8C390017F239 /* Eventex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7F382C25BF8C390017F239 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B7F382E25BF8C390017F239 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B7F383025BF8C390017F239 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2B7F383025BF8C390017F239 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		2B7F383325BF8C390017F239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B7F383625BF8C390017F239 /* Eventex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eventex.xcdatamodel; sourceTree = "<group>"; };
 		2B7F383825BF8C3C0017F239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				2B7F382C25BF8C390017F239 /* AppDelegate.swift */,
 				2B7F382E25BF8C390017F239 /* SceneDelegate.swift */,
-				2B7F383025BF8C390017F239 /* ViewController.swift */,
+				2B7F383025BF8C390017F239 /* EventViewController.swift */,
 				2B7F383225BF8C390017F239 /* Main.storyboard */,
 				2B7F383825BF8C3C0017F239 /* Assets.xcassets */,
 				2B7F383A25BF8C3C0017F239 /* LaunchScreen.storyboard */,
@@ -261,7 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B7F383125BF8C390017F239 /* ViewController.swift in Sources */,
+				2B7F383125BF8C390017F239 /* EventViewController.swift in Sources */,
 				2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */,
 				2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */,
 				2B7F383725BF8C390017F239 /* Eventex.xcdatamodeld in Sources */,
