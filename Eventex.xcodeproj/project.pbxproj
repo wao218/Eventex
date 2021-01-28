@@ -19,6 +19,7 @@
 		2B7F383C25BF8C3C0017F239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B7F383A25BF8C3C0017F239 /* LaunchScreen.storyboard */; };
 		2B7F384725BF8C3D0017F239 /* EventexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F384625BF8C3D0017F239 /* EventexTests.swift */; };
 		2B7F385225BF8C3D0017F239 /* EventexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F385125BF8C3D0017F239 /* EventexUITests.swift */; };
+		2BA6768425C366BE0046FCA7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2B7F384D25BF8C3D0017F239 /* EventexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7F385125BF8C3D0017F239 /* EventexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventexUITests.swift; sourceTree = "<group>"; };
 		2B7F385325BF8C3D0017F239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */,
 				2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */,
+				2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				2B7F383C25BF8C3C0017F239 /* LaunchScreen.storyboard in Resources */,
 				2B1DE85B25C327B000946B92 /* EventSearchResultCell.xib in Resources */,
 				2B7F383925BF8C3C0017F239 /* Assets.xcassets in Resources */,
+				2BA6768425C366BE0046FCA7 /* NothingFoundCell.xib in Resources */,
 				2B7F383425BF8C390017F239 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

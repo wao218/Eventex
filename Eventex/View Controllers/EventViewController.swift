@@ -22,6 +22,7 @@ class EventViewController: UIViewController {
   struct TableView {
     struct CellIdentifiers {
       static let eventSearchResultCell = "EventSearchResultCell"
+      static let nothingFoundCell = "NothingFoundCell"
     }
   }
   
@@ -30,8 +31,13 @@ class EventViewController: UIViewController {
     
     searchBar.becomeFirstResponder()
     
-    let cellNib = UINib(nibName: "EventSearchResultCell", bundle: nil)
+    
+    // Register Nibs
+    var cellNib = UINib(nibName: TableView.CellIdentifiers.eventSearchResultCell, bundle: nil)
     tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.eventSearchResultCell)
+    cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
+    tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
+    
   }
 
 
@@ -74,20 +80,16 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellIdentifier = TableView.CellIdentifiers.eventSearchResultCell
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventSearchResultCell
-    
     if searchResults.count == 0 {
-      cell.eventTitleLabel.text = "(Nothing found)"
-      cell.eventLocationLabel.text = ""
+      return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
     } else {
+      let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.eventSearchResultCell, for: indexPath) as! EventSearchResultCell
+      
       let searchResult = searchResults[indexPath.row]
       cell.eventTitleLabel.text = searchResult.eventTitle
       cell.eventLocationLabel.text = searchResult.eventLocation
+      return cell
     }
-    
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
