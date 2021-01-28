@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B11470625C2429100DA2A58 /* EventSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B11470525C2429100DA2A58 /* EventSearchResult.swift */; };
+		2B1DE85B25C327B000946B92 /* EventSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */; };
+		2B1DE86025C3591200946B92 /* EventSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */; };
 		2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F382C25BF8C390017F239 /* AppDelegate.swift */; };
 		2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F382E25BF8C390017F239 /* SceneDelegate.swift */; };
 		2B7F383125BF8C390017F239 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F383025BF8C390017F239 /* EventViewController.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		2B11470525C2429100DA2A58 /* EventSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResult.swift; sourceTree = "<group>"; };
+		2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventSearchResultCell.xib; sourceTree = "<group>"; };
+		2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResultCell.swift; sourceTree = "<group>"; };
 		2B7F382925BF8C390017F239 /* Eventex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7F382C25BF8C390017F239 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B7F382E25BF8C390017F239 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1DE85625C3269E00946B92 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B7F383025BF8C390017F239 /* EventViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2B1DE85725C326B700946B92 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B7F383525BF8C390017F239 /* Eventex.xcdatamodeld */,
+				2B11470525C2429100DA2A58 /* EventSearchResult.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		2B1DE85825C326CC00946B92 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B7F382C25BF8C390017F239 /* AppDelegate.swift */,
+				2B7F382E25BF8C390017F239 /* SceneDelegate.swift */,
+				2B7F383225BF8C390017F239 /* Main.storyboard */,
+				2B7F383825BF8C3C0017F239 /* Assets.xcassets */,
+				2B7F383A25BF8C3C0017F239 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2B1DE85925C3275500946B92 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */,
+				2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */,
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
 		2B7F382025BF8C390017F239 = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +145,11 @@
 		2B7F382B25BF8C390017F239 /* Eventex */ = {
 			isa = PBXGroup;
 			children = (
-				2B7F382C25BF8C390017F239 /* AppDelegate.swift */,
-				2B7F382E25BF8C390017F239 /* SceneDelegate.swift */,
-				2B7F383025BF8C390017F239 /* EventViewController.swift */,
-				2B7F383225BF8C390017F239 /* Main.storyboard */,
-				2B7F383825BF8C3C0017F239 /* Assets.xcassets */,
-				2B7F383A25BF8C3C0017F239 /* LaunchScreen.storyboard */,
+				2B1DE85725C326B700946B92 /* Data Model */,
 				2B7F383D25BF8C3C0017F239 /* Info.plist */,
-				2B7F383525BF8C390017F239 /* Eventex.xcdatamodeld */,
-				2B11470525C2429100DA2A58 /* EventSearchResult.swift */,
+				2B1DE85925C3275500946B92 /* Nibs */,
+				2B1DE85825C326CC00946B92 /* Resources */,
+				2B1DE85625C3269E00946B92 /* View Controllers */,
 			);
 			path = Eventex;
 			sourceTree = "<group>";
@@ -238,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B7F383C25BF8C3C0017F239 /* LaunchScreen.storyboard in Resources */,
+				2B1DE85B25C327B000946B92 /* EventSearchResultCell.xib in Resources */,
 				2B7F383925BF8C3C0017F239 /* Assets.xcassets in Resources */,
 				2B7F383425BF8C390017F239 /* Main.storyboard in Resources */,
 			);
@@ -269,6 +308,7 @@
 				2B11470625C2429100DA2A58 /* EventSearchResult.swift in Sources */,
 				2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */,
 				2B7F383725BF8C390017F239 /* Eventex.xcdatamodeld in Sources */,
+				2B1DE86025C3591200946B92 /* EventSearchResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

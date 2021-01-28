@@ -8,17 +8,30 @@
 import UIKit
 
 class EventViewController: UIViewController {
+  // MARK: - IBOutlets
   @IBOutlet var searchBar: UISearchBar!
   @IBOutlet var tableView: UITableView!
   
-  // Data Model
+  // MARK: - Data Model
   var searchResults = [EventSearchResult]()
   
+  // MARK: - Variables
   var hasSearched = false
+  
+  // MAARK: - Table View Struct
+  struct TableView {
+    struct CellIdentifiers {
+      static let eventSearchResultCell = "EventSearchResultCell"
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    searchBar.becomeFirstResponder()
+    
+    let cellNib = UINib(nibName: "EventSearchResultCell", bundle: nil)
+    tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.eventSearchResultCell)
   }
 
 
@@ -61,20 +74,17 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellIdentifier = "SearchResultCell"
+    let cellIdentifier = TableView.CellIdentifiers.eventSearchResultCell
     
-    var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-    if cell == nil {
-      cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventSearchResultCell
     
     if searchResults.count == 0 {
-      cell.textLabel!.text = "(Nothing found)"
-      cell.detailTextLabel!.text = ""
+      cell.eventTitleLabel.text = "(Nothing found)"
+      cell.eventLocationLabel.text = ""
     } else {
       let searchResult = searchResults[indexPath.row]
-      cell.textLabel!.text = searchResult.eventTitle
-      cell.detailTextLabel!.text = searchResult.eventLocation
+      cell.eventTitleLabel.text = searchResult.eventTitle
+      cell.eventLocationLabel.text = searchResult.eventLocation
     }
     
     return cell
