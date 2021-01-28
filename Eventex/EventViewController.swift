@@ -12,7 +12,9 @@ class EventViewController: UIViewController {
   @IBOutlet var tableView: UITableView!
   
   // Data Model
-  var searchResults = [String]()
+  var searchResults = [EventSearchResult]()
+  
+  var hasSearched = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,9 +29,17 @@ extension EventViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     searchResults = []
-    for i in 0...10 {
-      searchResults.append(String(format: "Fake Result %d for '%@'", i, searchBar.text!))
+    
+    if searchBar.text! != "football" {
+      for i in 0...10 {
+        let searchResult = EventSearchResult()
+        searchResult.eventTitle = String(format: "Fake Result %d for", i)
+        searchResult.eventLocation = searchBar.text!
+        searchResults.append(searchResult)
+      }
     }
+    
+    hasSearched = true
     tableView.reloadData()
   }
   
@@ -41,7 +51,13 @@ extension EventViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return searchResults.count
+    if !hasSearched {
+      return 0
+    } else if searchResults.count == 0 {
+      return 1
+    } else {
+      return searchResults.count
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,11 +65,31 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
     
     var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
     if cell == nil {
-      cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+      cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
     }
-    cell.textLabel!.text = searchResults[indexPath.row]
+    
+    if searchResults.count == 0 {
+      cell.textLabel!.text = "(Nothing found)"
+      cell.detailTextLabel!.text = ""
+    } else {
+      let searchResult = searchResults[indexPath.row]
+      cell.textLabel!.text = searchResult.eventTitle
+      cell.detailTextLabel!.text = searchResult.eventLocation
+    }
     
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    if searchResults.count == 0 {
+      return nil
+    } else {
+      return indexPath
+    }
   }
   
   
