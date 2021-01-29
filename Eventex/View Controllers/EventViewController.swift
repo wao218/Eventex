@@ -39,27 +39,52 @@ class EventViewController: UIViewController {
     tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
     
   }
-
+  
+  // MARK: - Helper Methods
+  
+  // Create valid url
+  func seatGeekURL(searchText: String) -> URL {
+    
+    // access environment variables
+    let clientID = ProcessInfo.processInfo.environment["CLIENTID"]
+    
+    let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+    let urlString = String(format: "https://api.seatgeek.com/2/events?client_id=\(clientID!)&q=%@", encodedText)
+    let url = URL(string: urlString)
+    return url!
+  }
+  
+  // Perform Search Request
+  func performSearchRequest(with url: URL) -> String? {
+    do {
+      return try String(contentsOf: url, encoding: .utf8)
+    } catch {
+      print("Download Error: \(error.localizedDescription)")
+      return nil
+    }
+  }
 
 }
 
 // MARK: - Search Bar Delegate
 extension EventViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    searchResults = []
     
-    if searchBar.text! != "football" {
-      for i in 0...10 {
-        let searchResult = EventSearchResult()
-        searchResult.eventTitle = String(format: "Fake Result %d for", i)
-        searchResult.eventLocation = searchBar.text!
-        searchResults.append(searchResult)
+    if !searchBar.text!.isEmpty {
+      searchBar.resignFirstResponder()
+      
+      hasSearched = true
+      searchResults = []
+      
+      let url = seatGeekURL(searchText: searchBar.text!)
+      print("URL: '\(url)'")
+      
+      if let jsonString = performSearchRequest(with: url) {
+        print("Received JSON String '\(jsonString)'")
       }
+      
+      tableView.reloadData()
     }
-    
-    hasSearched = true
-    tableView.reloadData()
   }
   
   func position(for bar: UIBarPositioning) -> UIBarPosition {
