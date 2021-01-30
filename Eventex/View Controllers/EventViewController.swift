@@ -19,6 +19,9 @@ class EventViewController: UIViewController {
   var hasSearched = false
   var isLoading = false
   
+  // MARK: - Instance Variables
+  var dataTask: URLSessionDataTask?
+  
   // MAARK: - Table View Struct
   struct TableView {
     struct CellIdentifiers {
@@ -89,6 +92,7 @@ extension EventViewController: UISearchBarDelegate {
     if !searchBar.text!.isEmpty {
       searchBar.resignFirstResponder()
       
+      dataTask?.cancel()
       isLoading = true
       tableView.reloadData()
       
@@ -98,10 +102,10 @@ extension EventViewController: UISearchBarDelegate {
       // Perform Search Request & Fetch contents of URL
       let url = seatGeekURL(searchText: searchBar.text!)
       let session = URLSession.shared
-      let dataTask = session.dataTask(with: url) {data, response, error in
+      dataTask = session.dataTask(with: url) {data, response, error in
         
-        if let error = error {
-          print("Failure! \(error.localizedDescription)")
+        if let error = error, error.localizedDescription == "cancelled" {
+          return
         } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
           if let data = data {
             self.searchResults = self.parse(data: data)
@@ -122,7 +126,7 @@ extension EventViewController: UISearchBarDelegate {
           self.showNetworkError()
         }
       }
-      dataTask.resume()
+      dataTask?.resume()
     }
   }
   
