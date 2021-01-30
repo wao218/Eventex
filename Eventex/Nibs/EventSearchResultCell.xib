@@ -72,6 +72,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="eventDateLabel" destination="Ry1-sT-1Fg" id="mmb-zy-ZFy"/>
                 <outlet property="eventImage" destination="c9T-MA-yTp" id="cj5-d6-6wb"/>
                 <outlet property="eventLocationLabel" destination="WPd-vM-0Mh" id="eOF-br-37i"/>
                 <outlet property="eventTitleLabel" destination="0bQ-bh-eZd" id="1yR-s7-78d"/>

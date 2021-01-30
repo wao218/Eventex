@@ -11,7 +11,7 @@ class EventSearchResultCell: UITableViewCell {
   
   @IBOutlet var eventTitleLabel: UILabel!
   @IBOutlet var eventLocationLabel: UILabel!
-//  @IBOutlet var eventDateLabel: UILabel!
+  @IBOutlet var eventDateLabel: UILabel!
   @IBOutlet var eventImage: UIImageView!
 
   override func awakeFromNib() {

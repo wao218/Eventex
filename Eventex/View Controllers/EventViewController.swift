@@ -13,16 +13,18 @@ class EventViewController: UIViewController {
   @IBOutlet var tableView: UITableView!
   
   // MARK: - Data Model
-  var searchResults = [EventSearchResult]()
+  var searchResults = [Event]()
   
-  // MARK: - Variables
+  // MARK: - State Variables
   var hasSearched = false
+  var isLoading = false
   
   // MAARK: - Table View Struct
   struct TableView {
     struct CellIdentifiers {
       static let eventSearchResultCell = "EventSearchResultCell"
       static let nothingFoundCell = "NothingFoundCell"
+      static let loadingCell = "LoadingCell"
     }
   }
   
@@ -37,6 +39,8 @@ class EventViewController: UIViewController {
     tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.eventSearchResultCell)
     cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
     tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
+    cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
+    tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)
     
   }
   
@@ -49,19 +53,42 @@ class EventViewController: UIViewController {
     let clientID = ProcessInfo.processInfo.environment["CLIENTID"]
     
     let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-    let urlString = String(format: "https://api.seatgeek.com/2/events?client_id=\(clientID!)&q=%@", encodedText)
+    let urlString = String(format: "https://api.seatgeek.com/2/events?client_id=\(clientID!)&q=%@&per_page=200", encodedText)
     let url = URL(string: urlString)
     return url!
   }
   
   // Perform Search Request
-  func performSearchRequest(with url: URL) -> String? {
+  func performSearchRequest(with url: URL) -> Data? {
     do {
-      return try String(contentsOf: url, encoding: .utf8)
+      return try Data(contentsOf: url)
     } catch {
       print("Download Error: \(error.localizedDescription)")
+      showNetworkError()
       return nil
     }
+  }
+  
+  // Parse JSON Data
+  func parse(data: Data) -> [Event] {
+    do {
+      let decoder = JSONDecoder()
+      let result = try decoder.decode(Events.self, from: data)
+      return result.events
+    } catch {
+      print("JSON Error: \(error)")
+      return []
+    }
+  }
+  
+  // Alert to Handle Network Errors
+  func showNetworkError() {
+    let alert = UIAlertController(title: "Whoops...", message: "There was an error accessing the SeatGeak Server. Please try again.", preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    
+    alert.addAction(action)
+    present(alert, animated: true, completion: nil)
   }
 
 }
@@ -73,16 +100,20 @@ extension EventViewController: UISearchBarDelegate {
     if !searchBar.text!.isEmpty {
       searchBar.resignFirstResponder()
       
+      isLoading = true
+      tableView.reloadData()
+      
       hasSearched = true
       searchResults = []
       
       let url = seatGeekURL(searchText: searchBar.text!)
       print("URL: '\(url)'")
       
-      if let jsonString = performSearchRequest(with: url) {
-        print("Received JSON String '\(jsonString)'")
+      if let data = performSearchRequest(with: url) {
+        searchResults = parse(data: data) // store JSON Data into searchResults array
       }
       
+      isLoading = false
       tableView.reloadData()
     }
   }
@@ -95,7 +126,9 @@ extension EventViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if !hasSearched {
+    if isLoading {
+      return 1
+    } else if !hasSearched {
       return 0
     } else if searchResults.count == 0 {
       return 1
@@ -105,16 +138,30 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if searchResults.count == 0 {
-      return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
-    } else {
-      let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.eventSearchResultCell, for: indexPath) as! EventSearchResultCell
+    
+    if isLoading {
+      let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.loadingCell, for: indexPath)
       
-      let searchResult = searchResults[indexPath.row]
-      cell.eventTitleLabel.text = searchResult.eventTitle
-      cell.eventLocationLabel.text = searchResult.eventLocation
+      let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+      spinner.startAnimating()
       return cell
+      
+    } else {
+      
+      if searchResults.count == 0 {
+        return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
+      } else {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.eventSearchResultCell, for: indexPath) as! EventSearchResultCell
+        
+        let searchResult = searchResults[indexPath.row]
+        
+        cell.eventTitleLabel.text = searchResult.eventTitle
+        cell.eventLocationLabel.text = searchResult.venue.eventLocation
+        cell.eventDateLabel.text = searchResult.dateTime
+        return cell
+      }
     }
+    
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,7 +169,7 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    if searchResults.count == 0 {
+    if searchResults.count == 0 || isLoading {
       return nil
     } else {
       return indexPath

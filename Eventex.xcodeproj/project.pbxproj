@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B11470625C2429100DA2A58 /* EventSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B11470525C2429100DA2A58 /* EventSearchResult.swift */; };
 		2B1DE85B25C327B000946B92 /* EventSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */; };
 		2B1DE86025C3591200946B92 /* EventSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */; };
 		2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F382C25BF8C390017F239 /* AppDelegate.swift */; };
@@ -20,6 +19,11 @@
 		2B7F384725BF8C3D0017F239 /* EventexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F384625BF8C3D0017F239 /* EventexTests.swift */; };
 		2B7F385225BF8C3D0017F239 /* EventexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7F385125BF8C3D0017F239 /* EventexUITests.swift */; };
 		2BA6768425C366BE0046FCA7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */; };
+		2BA676A625C4E7540046FCA7 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676A525C4E7540046FCA7 /* Events.swift */; };
+		2BA676AB25C4E7870046FCA7 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676AA25C4E7870046FCA7 /* Event.swift */; };
+		2BA676B025C4E7B80046FCA7 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676AF25C4E7B80046FCA7 /* Venue.swift */; };
+		2BA676B525C4E7E90046FCA7 /* Performers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676B425C4E7E90046FCA7 /* Performers.swift */; };
+		2BA676BD25C4F0610046FCA7 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA676BC25C4F0610046FCA7 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B11470525C2429100DA2A58 /* EventSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResult.swift; sourceTree = "<group>"; };
 		2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventSearchResultCell.xib; sourceTree = "<group>"; };
 		2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResultCell.swift; sourceTree = "<group>"; };
 		2B7F382925BF8C390017F239 /* Eventex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +62,11 @@
 		2B7F385125BF8C3D0017F239 /* EventexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventexUITests.swift; sourceTree = "<group>"; };
 		2B7F385325BF8C3D0017F239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		2BA676A525C4E7540046FCA7 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		2BA676AA25C4E7870046FCA7 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2BA676AF25C4E7B80046FCA7 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		2BA676B425C4E7E90046FCA7 /* Performers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performers.swift; sourceTree = "<group>"; };
+		2BA676BC25C4F0610046FCA7 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				2B7F383525BF8C390017F239 /* Eventex.xcdatamodeld */,
-				2B11470525C2429100DA2A58 /* EventSearchResult.swift */,
+				2BA676A525C4E7540046FCA7 /* Events.swift */,
+				2BA676AA25C4E7870046FCA7 /* Event.swift */,
+				2BA676AF25C4E7B80046FCA7 /* Venue.swift */,
+				2BA676B425C4E7E90046FCA7 /* Performers.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 				2B1DE85A25C327B000946B92 /* EventSearchResultCell.xib */,
 				2B1DE85F25C3591200946B92 /* EventSearchResultCell.swift */,
 				2BA6768325C366BE0046FCA7 /* NothingFoundCell.xib */,
+				2BA676BC25C4F0610046FCA7 /* LoadingCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -281,6 +293,7 @@
 				2B7F383C25BF8C3C0017F239 /* LaunchScreen.storyboard in Resources */,
 				2B1DE85B25C327B000946B92 /* EventSearchResultCell.xib in Resources */,
 				2B7F383925BF8C3C0017F239 /* Assets.xcassets in Resources */,
+				2BA676BD25C4F0610046FCA7 /* LoadingCell.xib in Resources */,
 				2BA6768425C366BE0046FCA7 /* NothingFoundCell.xib in Resources */,
 				2B7F383425BF8C390017F239 /* Main.storyboard in Resources */,
 			);
@@ -307,10 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BA676AB25C4E7870046FCA7 /* Event.swift in Sources */,
 				2B7F383125BF8C390017F239 /* EventViewController.swift in Sources */,
+				2BA676B525C4E7E90046FCA7 /* Performers.swift in Sources */,
 				2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */,
-				2B11470625C2429100DA2A58 /* EventSearchResult.swift in Sources */,
+				2BA676B025C4E7B80046FCA7 /* Venue.swift in Sources */,
 				2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */,
+				2BA676A625C4E7540046FCA7 /* Events.swift in Sources */,
 				2B7F383725BF8C390017F239 /* Eventex.xcdatamodeld in Sources */,
 				2B1DE86025C3591200946B92 /* EventSearchResultCell.swift in Sources */,
 			);
