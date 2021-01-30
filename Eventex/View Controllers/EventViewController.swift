@@ -58,17 +58,6 @@ class EventViewController: UIViewController {
     return url!
   }
   
-  // Perform Search Request
-  func performSearchRequest(with url: URL) -> Data? {
-    do {
-      return try Data(contentsOf: url)
-    } catch {
-      print("Download Error: \(error.localizedDescription)")
-      showNetworkError()
-      return nil
-    }
-  }
-  
   // Parse JSON Data
   func parse(data: Data) -> [Event] {
     do {
@@ -106,15 +95,34 @@ extension EventViewController: UISearchBarDelegate {
       hasSearched = true
       searchResults = []
       
+      // Perform Search Request & Fetch contents of URL
       let url = seatGeekURL(searchText: searchBar.text!)
-      print("URL: '\(url)'")
-      
-      if let data = performSearchRequest(with: url) {
-        searchResults = parse(data: data) // store JSON Data into searchResults array
+      let session = URLSession.shared
+      let dataTask = session.dataTask(with: url) {data, response, error in
+        
+        if let error = error {
+          print("Failure! \(error.localizedDescription)")
+        } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+          if let data = data {
+            self.searchResults = self.parse(data: data)
+            DispatchQueue.main.async {
+              self.isLoading = false
+              self.tableView.reloadData()
+            }
+            return
+          }
+        } else {
+          print("Failure! \(response!)")
+        }
+        
+        DispatchQueue.main.async {
+          self.hasSearched = false
+          self.isLoading = false
+          self.tableView.reloadData()
+          self.showNetworkError()
+        }
       }
-      
-      isLoading = false
-      tableView.reloadData()
+      dataTask.resume()
     }
   }
   
