@@ -24,6 +24,7 @@
 		2BA676B025C4E7B80046FCA7 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676AF25C4E7B80046FCA7 /* Venue.swift */; };
 		2BA676B525C4E7E90046FCA7 /* Performers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676B425C4E7E90046FCA7 /* Performers.swift */; };
 		2BA676BD25C4F0610046FCA7 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA676BC25C4F0610046FCA7 /* LoadingCell.xib */; };
+		2BA676C525C8E3590046FCA7 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA676C425C8E3590046FCA7 /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		2BA676AF25C4E7B80046FCA7 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		2BA676B425C4E7E90046FCA7 /* Performers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performers.swift; sourceTree = "<group>"; };
 		2BA676BC25C4F0610046FCA7 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		2BA676C425C8E3590046FCA7 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				2B7F382C25BF8C390017F239 /* AppDelegate.swift */,
-				2B7F382E25BF8C390017F239 /* SceneDelegate.swift */,
-				2B7F383225BF8C390017F239 /* Main.storyboard */,
 				2B7F383825BF8C3C0017F239 /* Assets.xcassets */,
 				2B7F383A25BF8C3C0017F239 /* LaunchScreen.storyboard */,
+				2B7F383225BF8C390017F239 /* Main.storyboard */,
+				2B7F382E25BF8C390017F239 /* SceneDelegate.swift */,
+				2BA676C425C8E3590046FCA7 /* UIImageView+DownloadImage.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				2B7F383125BF8C390017F239 /* EventViewController.swift in Sources */,
 				2BA676B525C4E7E90046FCA7 /* Performers.swift in Sources */,
 				2B7F382D25BF8C390017F239 /* AppDelegate.swift in Sources */,
+				2BA676C525C8E3590046FCA7 /* UIImageView+DownloadImage.swift in Sources */,
 				2BA676B025C4E7B80046FCA7 /* Venue.swift in Sources */,
 				2B7F382F25BF8C390017F239 /* SceneDelegate.swift in Sources */,
 				2BA676A625C4E7540046FCA7 /* Events.swift in Sources */,

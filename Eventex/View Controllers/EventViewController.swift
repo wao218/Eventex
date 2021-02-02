@@ -87,7 +87,7 @@ class EventViewController: UIViewController {
 
 // MARK: - Search Bar Delegate
 extension EventViewController: UISearchBarDelegate {
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+  func performSearch() {
     
     if !searchBar.text!.isEmpty {
       searchBar.resignFirstResponder()
@@ -133,6 +133,10 @@ extension EventViewController: UISearchBarDelegate {
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
   }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    performSearch()
+  }
 }
 
 // MARK: - Table View Delegate
@@ -167,9 +171,7 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
         
         let searchResult = searchResults[indexPath.row]
         
-        cell.eventTitleLabel.text = searchResult.eventTitle
-        cell.eventLocationLabel.text = searchResult.venue.eventLocation
-        cell.eventDateLabel.text = searchResult.dateTime
+        cell.configure(for: searchResult)
         return cell
       }
     }
