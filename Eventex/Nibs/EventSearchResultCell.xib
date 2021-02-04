@@ -28,6 +28,11 @@
                             <constraint firstAttribute="width" constant="30" id="CyI-zu-rcl"/>
                         </constraints>
                         <state key="normal" image="heart" catalog="system"/>
+                        <state key="selected" image="heart.fill" catalog="system"/>
+                        <state key="highlighted" image="heart.fill" catalog="system"/>
+                        <connections>
+                            <action selector="likeButton:" destination="DAC-Nu-01T" eventType="touchUpInside" id="c1v-iT-D4c"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bQ-bh-eZd">
                         <rect key="frame" x="16" y="11" width="343" height="23"/>
@@ -82,6 +87,7 @@
     </objects>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <namedColor name="EventLocationDate">
             <color red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

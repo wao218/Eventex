@@ -15,8 +15,23 @@ class EventSearchResultCell: UITableViewCell {
   @IBOutlet var eventDateLabel: UILabel!
   @IBOutlet var eventImage: UIImageView!
   
+  // MARK: - IBActions
+  @IBAction func likeButton(_ sender: UIButton) {
+    print("like button pressed")
+    if !likedEvent {
+      likedEvent = true
+      sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+      print("Value of likedEvent when I like something: \(likedEvent)")
+    } else {
+      likedEvent = false
+      sender.setImage(UIImage(systemName: "heart"), for: .normal)
+      print("Value of likedEvent when I unlike something: \(likedEvent)")
+    }
+  }
+  
   // MARK: - Instance Variables
   var downloadTask: URLSessionDownloadTask?
+  var likedEvent = false
 
   override func awakeFromNib() {
     super.awakeFromNib()
