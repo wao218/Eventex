@@ -27,6 +27,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="CyI-zu-rcl"/>
                         </constraints>
+                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" image="heart" catalog="system"/>
                         <state key="selected" image="heart.fill" catalog="system"/>
                         <state key="highlighted" image="heart.fill" catalog="system"/>

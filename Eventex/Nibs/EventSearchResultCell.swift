@@ -54,6 +54,11 @@ class EventSearchResultCell: UITableViewCell {
 
   // MARK: - Helper Methods
   func configure(for result: Event) {
+    
+    // TODO: Check if event is already in liked events
+    // TODO: If it is in Core Data return core data else return api event
+    
+    
     eventTitleLabel.text = result.eventTitle
     eventLocationLabel.text = result.venue.eventLocation
     eventDateLabel.text = result.dateTime
