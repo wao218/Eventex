@@ -61,12 +61,24 @@ class EventSearchResultCell: UITableViewCell {
     
     eventTitleLabel.text = result.eventTitle
     eventLocationLabel.text = result.venue.eventLocation
-    eventDateLabel.text = result.dateTime
-    
-//    print(result.performers[0].imageURL)
+    eventDateLabel.text = formatDate(date: result.dateTime)
     
     if let imageURL = URL(string: result.performers[0].imageURL) {
       downloadTask = eventImage.loadImage(url: imageURL)
+    }
+  }
+  
+  func formatDate(date: String) -> String {
+    let dateformatterGet = DateFormatter()
+    dateformatterGet.locale = Locale(identifier: "en_US_POSIX")
+    dateformatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    
+    let dateFormatterPrint = DateFormatter()
+    dateFormatterPrint.dateFormat = "MMM dd,yyy h:mm a"
+    if let date = dateformatterGet.date(from: date) {
+      return dateFormatterPrint.string(from: date)
+    } else {
+      return "Unkown"
     }
   }
   
