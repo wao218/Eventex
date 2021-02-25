@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EventViewController: UIViewController {
   // MARK: - IBOutlets
@@ -21,6 +22,7 @@ class EventViewController: UIViewController {
   
   // MARK: - Instance Variables
   var dataTask: URLSessionDataTask?
+  private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
   
   // MAARK: - Table View Struct
   struct TableView {
@@ -87,6 +89,15 @@ class EventViewController: UIViewController {
 
 // MARK: - Search Bar Delegate
 extension EventViewController: UISearchBarDelegate {
+  
+  func position(for bar: UIBarPositioning) -> UIBarPosition {
+    return .topAttached
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    performSearch()
+  }
+
   func performSearch() {
     
     if !searchBar.text!.isEmpty {
@@ -128,14 +139,6 @@ extension EventViewController: UISearchBarDelegate {
       }
       dataTask?.resume()
     }
-  }
-  
-  func position(for bar: UIBarPositioning) -> UIBarPosition {
-    return .topAttached
-  }
-  
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    performSearch()
   }
 }
 
@@ -189,6 +192,4 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
       return indexPath
     }
   }
-  
-  
 }

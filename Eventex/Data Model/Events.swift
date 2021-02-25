@@ -37,11 +37,9 @@ struct Venue: Codable {
 }
 
 struct Performers: Codable {
-  var id: Int
   var imageURL: String
   
   enum CodingKeys: String, CodingKey {
     case imageURL = "image"
-    case id
   }
 }

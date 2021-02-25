@@ -22,7 +22,7 @@
                         <color key="tintColor" systemColor="systemGrayColor"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="ultraLight"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJx-ye-aZG">
+                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJx-ye-aZG">
                         <rect key="frame" x="16" y="219" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="CyI-zu-rcl"/>
@@ -32,7 +32,7 @@
                         <state key="selected" image="heart.fill" catalog="system"/>
                         <state key="highlighted" image="heart.fill" catalog="system"/>
                         <connections>
-                            <action selector="likeButton:" destination="DAC-Nu-01T" eventType="touchUpInside" id="c1v-iT-D4c"/>
+                            <action selector="didTapLikeButton:" destination="DAC-Nu-01T" eventType="touchUpInside" id="Hn3-Pq-me3"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bQ-bh-eZd">

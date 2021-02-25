@@ -2,7 +2,7 @@
 //  LikedPerformer+CoreDataProperties.swift
 //  Eventex
 //
-//  Created by Wesley Osborne on 2/12/21.
+//  Created by Wesley Osborne on 2/23/21.
 //
 //
 
@@ -16,7 +16,7 @@ extension LikedPerformer {
         return NSFetchRequest<LikedPerformer>(entityName: "LikedPerformer")
     }
 
-    @NSManaged public var eventLocation: String
+    @NSManaged public var imageURL: String
     @NSManaged public var event: LikedEvent
 
 }

@@ -2,7 +2,7 @@
 //  LikedVenue+CoreDataClass.swift
 //  Eventex
 //
-//  Created by Wesley Osborne on 2/12/21.
+//  Created by Wesley Osborne on 2/23/21.
 //
 //
 
