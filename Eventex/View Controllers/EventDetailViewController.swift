@@ -1,34 +1,37 @@
 //
-//  EventSearchResultCell.swift
+//  EventDetailViewController.swift
 //  Eventex
 //
-//  Created by Wesley Osborne on 1/28/21.
+//  Created by Wesley Osborne on 2/25/21.
 //
 
 import UIKit
 import CoreData
 
-class EventSearchResultCell: UITableViewCell {
-  // MARK: - Instance Variables
-  private var downloadTask: URLSessionDownloadTask?
-  private var liked = false
-  private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+class EventDetailViewController: UIViewController {
   
-  private var eventModel: Event?
+    
+  
+  private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+  public var eventModel: Event?
+  private var downloadTask: URLSessionDownloadTask?
+
   private var likedEvents = [LikedEvent]()
   private var likedVenues = [LikedVenue]()
   private var likedPerformers = [LikedPerformer]()
   
-  
-  
-
-  
-  // MARK: - IBOutlets
   @IBOutlet var eventTitleLabel: UILabel!
   @IBOutlet var eventLocationLabel: UILabel!
   @IBOutlet var eventDateLabel: UILabel!
   @IBOutlet var eventImage: UIImageView!
-
+  
+  @IBAction func didTabMoreDetailsButton() {
+    
+  }
+  
+  @IBAction func didTapBackbutton() {
+    self.dismiss(animated: true, completion: nil)
+  }
   
   @IBAction func didTapLikeButton(_ sender: AnyObject) {
     guard let eventModel = eventModel else {
@@ -73,53 +76,22 @@ class EventSearchResultCell: UITableViewCell {
       print(likedVenues)
     }
   }
-  
-
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    let selectedView = UIView(frame: CGRect.zero)
-    selectedView.backgroundColor = UIColor(named: "SelectionColor")?.withAlphaComponent(0.5)
-    selectedBackgroundView = selectedView
-//    performFetch()
-  }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
-  }
-  
-  
-  override func prepareForReuse() {
-    super.prepareForReuse()
-    downloadTask?.cancel()
-    downloadTask = nil
-    let likeButton = contentView.viewWithTag(101) as! UIButton
-    likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-  }
-  
 
 
-  // MARK: - Helper Methods
-  public func configure(for result: Event) {
-    self.eventModel = result
-    // TODO: Check if event is already in liked events
-    // TODO: If it is in Core Data return core data else return api event
-    let likeButton = contentView.viewWithTag(101) as! UIButton
-    
-    if eventExists(id: result.id) {
-      likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    guard let event = eventModel else {
+      return
     }
+    eventTitleLabel.text = event.eventTitle
+    eventLocationLabel.text = event.venue.eventLocation
+    eventDateLabel.text = formatDate(date: event.dateTime)
     
-    
-    eventTitleLabel.text = result.eventTitle
-    eventLocationLabel.text = result.venue.eventLocation
-    eventDateLabel.text = formatDate(date: result.dateTime)
-    
-    if let imageURL = URL(string: result.performers[0].imageURL) {
+    if let imageURL = URL(string: event.performers[0].imageURL) {
       downloadTask = eventImage.loadImage(url: imageURL)
     }
+  
   }
   
   private func formatDate(date: String) -> String {
@@ -179,8 +151,5 @@ class EventSearchResultCell: UITableViewCell {
     
     return entitiesCount > 0
   }
-  
+
 }
-
-
-

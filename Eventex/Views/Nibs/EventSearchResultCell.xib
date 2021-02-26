@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c9T-MA-yTp">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="c9T-MA-yTp">
                         <rect key="frame" x="16" y="67" width="343" height="144"/>
                         <color key="tintColor" systemColor="systemGrayColor"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="ultraLight"/>
@@ -59,11 +59,13 @@
                     <constraint firstAttribute="trailingMargin" secondItem="Ry1-sT-1Fg" secondAttribute="trailing" id="1BM-rI-gmX"/>
                     <constraint firstItem="GJx-ye-aZG" firstAttribute="top" secondItem="c9T-MA-yTp" secondAttribute="bottom" constant="8" symbolic="YES" id="1WH-DF-6D6"/>
                     <constraint firstItem="GJx-ye-aZG" firstAttribute="bottom" secondItem="uaF-wm-XZR" secondAttribute="bottomMargin" id="8qf-ye-FCK"/>
+                    <constraint firstItem="c9T-MA-yTp" firstAttribute="trailing" secondItem="uaF-wm-XZR" secondAttribute="trailingMargin" id="Aga-Qg-TfA"/>
                     <constraint firstItem="WPd-vM-0Mh" firstAttribute="trailing" secondItem="uaF-wm-XZR" secondAttribute="trailingMargin" id="EeY-I3-Fpg"/>
                     <constraint firstItem="0bQ-bh-eZd" firstAttribute="top" secondItem="uaF-wm-XZR" secondAttribute="topMargin" id="Ese-O1-h96"/>
                     <constraint firstItem="WPd-vM-0Mh" firstAttribute="top" secondItem="0bQ-bh-eZd" secondAttribute="bottom" constant="8" symbolic="YES" id="Ijn-Xh-Iuk"/>
                     <constraint firstItem="c9T-MA-yTp" firstAttribute="trailing" secondItem="uaF-wm-XZR" secondAttribute="trailingMargin" id="J6a-O9-H7X"/>
                     <constraint firstItem="c9T-MA-yTp" firstAttribute="top" secondItem="WPd-vM-0Mh" secondAttribute="bottom" constant="8" symbolic="YES" id="Jrh-RT-Edk"/>
+                    <constraint firstItem="c9T-MA-yTp" firstAttribute="leading" secondItem="uaF-wm-XZR" secondAttribute="leadingMargin" id="KC6-J8-PRO"/>
                     <constraint firstItem="GJx-ye-aZG" firstAttribute="top" secondItem="c9T-MA-yTp" secondAttribute="bottom" constant="8" symbolic="YES" id="NLg-7w-hxa"/>
                     <constraint firstItem="Ry1-sT-1Fg" firstAttribute="leading" secondItem="GJx-ye-aZG" secondAttribute="trailing" constant="40" id="PND-yN-kVE"/>
                     <constraint firstItem="0bQ-bh-eZd" firstAttribute="leading" secondItem="uaF-wm-XZR" secondAttribute="leadingMargin" id="SY5-Qr-6Gv"/>
@@ -89,6 +91,7 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="placeholderImage" width="343" height="144"/>
         <namedColor name="EventLocationDate">
             <color red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

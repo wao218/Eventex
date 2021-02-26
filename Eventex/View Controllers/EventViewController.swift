@@ -23,6 +23,7 @@ class EventViewController: UIViewController {
   // MARK: - Instance Variables
   var dataTask: URLSessionDataTask?
   private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+  var rowSelected: Int?
   
   // MAARK: - Table View Struct
   struct TableView {
@@ -85,7 +86,26 @@ class EventViewController: UIViewController {
     present(alert, animated: true, completion: nil)
   }
 
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    super.prepare(for: segue, sender: sender)
+    if segue.identifier == "EventDetail" {
+      let controller = segue.destination as! EventDetailViewController
+      controller.modalPresentationStyle = .fullScreen
+      if let row = rowSelected {
+        let event = searchResults[row]
+        controller.eventModel = event
+      }
+      
+      
+      
+//      let event = searchResults[indexPath.row]
+//      controller.title = event.eventTitle
+      
+    }
+  }
 }
+
 
 // MARK: - Search Bar Delegate
 extension EventViewController: UISearchBarDelegate {
@@ -183,7 +203,10 @@ extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    rowSelected = indexPath.row
+    performSegue(withIdentifier: "EventDetail", sender: self)
   }
+  
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     if searchResults.count == 0 || isLoading {

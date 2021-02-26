@@ -2,7 +2,7 @@
 //  LikedEvent+CoreDataProperties.swift
 //  Eventex
 //
-//  Created by Wesley Osborne on 2/23/21.
+//  Created by Wesley Osborne on 2/26/21.
 //
 //
 
@@ -19,6 +19,7 @@ extension LikedEvent {
     @NSManaged public var dateTime: String
     @NSManaged public var eventTitle: String
     @NSManaged public var id: Int64
+    @NSManaged public var url: String
     @NSManaged public var performers: NSSet
     @NSManaged public var venue: LikedVenue
 

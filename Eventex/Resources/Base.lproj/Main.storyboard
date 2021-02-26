@@ -13,7 +13,7 @@
         <!--Event View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EventViewController" customModule="Eventex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="BYZ-38-t0r" customClass="EventViewController" customModule="Eventex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,14 +50,16 @@
                     <tabBarItem key="tabBarItem" title="" id="cms-NN-eba">
                         <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="ZQ6-QS-QpH"/>
                     <connections>
                         <outlet property="searchBar" destination="TiZ-Ds-ht5" id="z9I-cL-xA4"/>
                         <outlet property="tableView" destination="GLC-17-7In" id="g2Q-Wu-DTd"/>
+                        <segue destination="OTg-Cl-3lY" kind="show" identifier="EventDetail" id="JeN-n3-obK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="109.47867298578198"/>
+            <point key="canvasLocation" x="-542" y="949"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YfL-mo-NVr">
@@ -77,12 +79,128 @@
             </objects>
             <point key="canvasLocation" x="130.76923076923077" y="109.47867298578198"/>
         </scene>
+        <!--Event Details-->
+        <scene sceneID="ErH-Ia-4Fi">
+            <objects>
+                <viewController id="OTg-Cl-3lY" customClass="EventDetailViewController" customModule="Eventex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NC9-pm-I4F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GGw-xq-wuW">
+                                <rect key="frame" x="0.0" y="141" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ynf-zI-ZdW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoW-Bu-dau">
+                                <rect key="frame" x="33" y="363" width="308" height="29.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="EventTitle"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51h-a0-VHp">
+                                <rect key="frame" x="33" y="416.5" width="308" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="EventLocationDate"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsA-dU-kqO">
+                                <rect key="frame" x="33" y="85" width="308" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" name="EventTitle"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygJ-3l-fMW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="bUK-ub-cQv"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Event Detail" id="5oy-OP-hKt">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="95U-JJ-eh0">
+                                            <connections>
+                                                <action selector="didTapBackbutton" destination="OTg-Cl-3lY" id="7zr-ba-Dn1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="Wij-TV-Pis">
+                                            <connections>
+                                                <action selector="didTapLikeButton:" destination="OTg-Cl-3lY" id="S6O-v9-VPI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WG-7K-tt4">
+                                <rect key="frame" x="33" y="460" width="308" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6DM-qi-fqH"/>
+                                </constraints>
+                                <state key="normal" title="More Details">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTabMoreDetailsButton" destination="OTg-Cl-3lY" eventType="touchUpInside" id="BrC-Hi-aY7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fgu-kO-ikZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8WG-7K-tt4" firstAttribute="top" secondItem="51h-a0-VHp" secondAttribute="bottom" constant="24" id="3Rg-Rl-vvA"/>
+                            <constraint firstItem="ygJ-3l-fMW" firstAttribute="trailing" secondItem="Fgu-kO-ikZ" secondAttribute="trailing" id="996-s6-et5"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="trailing" secondItem="VoW-Bu-dau" secondAttribute="trailing" constant="34" id="BUu-vw-oV6"/>
+                            <constraint firstItem="51h-a0-VHp" firstAttribute="top" secondItem="VoW-Bu-dau" secondAttribute="bottom" constant="24" id="IIz-M0-zXg"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="trailing" secondItem="GGw-xq-wuW" secondAttribute="trailing" id="Ieu-Ot-QGx"/>
+                            <constraint firstItem="VoW-Bu-dau" firstAttribute="top" secondItem="GGw-xq-wuW" secondAttribute="bottom" constant="22" id="Klv-3k-csa"/>
+                            <constraint firstItem="ygJ-3l-fMW" firstAttribute="top" secondItem="Fgu-kO-ikZ" secondAttribute="top" id="YUS-bd-UsM"/>
+                            <constraint firstItem="VoW-Bu-dau" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" constant="33" id="ZWb-e9-iK0"/>
+                            <constraint firstItem="GGw-xq-wuW" firstAttribute="top" secondItem="CsA-dU-kqO" secondAttribute="bottom" constant="34" id="bkR-RT-ZS0"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="trailing" secondItem="CsA-dU-kqO" secondAttribute="trailing" constant="34" id="cJJ-3U-UE5"/>
+                            <constraint firstItem="GGw-xq-wuW" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" id="ee1-Im-Zvx"/>
+                            <constraint firstItem="51h-a0-VHp" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" constant="33" id="g51-M1-pKb"/>
+                            <constraint firstItem="ygJ-3l-fMW" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" id="gHl-Ks-Mn0"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="trailing" secondItem="51h-a0-VHp" secondAttribute="trailing" constant="34" id="lK5-me-zTE"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="trailing" secondItem="8WG-7K-tt4" secondAttribute="trailing" constant="34" id="lcQ-Fj-n0L"/>
+                            <constraint firstItem="Fgu-kO-ikZ" firstAttribute="bottom" secondItem="8WG-7K-tt4" secondAttribute="bottom" constant="147" id="rjg-3J-STR"/>
+                            <constraint firstItem="CsA-dU-kqO" firstAttribute="top" secondItem="ygJ-3l-fMW" secondAttribute="bottom" constant="29" id="sHw-6b-a4R"/>
+                            <constraint firstItem="CsA-dU-kqO" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" constant="33" id="sxY-wB-EsQ"/>
+                            <constraint firstItem="8WG-7K-tt4" firstAttribute="leading" secondItem="Fgu-kO-ikZ" secondAttribute="leading" constant="33" id="tlh-m0-x5d"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Event Details" id="OPv-Ig-9BF">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="TaT-cf-p2G"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="pgw-pn-uf2"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="eventDateLabel" destination="VoW-Bu-dau" id="IhC-Uu-a4Z"/>
+                        <outlet property="eventImage" destination="GGw-xq-wuW" id="yCi-N1-2UB"/>
+                        <outlet property="eventLocationLabel" destination="51h-a0-VHp" id="2Ge-EM-fvN"/>
+                        <outlet property="eventTitleLabel" destination="CsA-dU-kqO" id="Gzq-Vr-iN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29z-YP-oSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="1053.8230884557722"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <namedColor name="EventLocationDate">
+            <color red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EventTitle">
+            <color red="0.078431372549019607" green="0.094117647058823528" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SearchBar">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

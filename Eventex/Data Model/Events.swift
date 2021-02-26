@@ -17,6 +17,7 @@ struct Event: Codable {
   var dateTime: String
   var performers: [Performers]
   var id: Int
+  var url: String
   
   enum CodingKeys: String, CodingKey {
     case eventTitle = "short_title"
@@ -24,6 +25,7 @@ struct Event: Codable {
     case performers
     case dateTime = "datetime_utc"
     case id
+    case url
   }
   
 }

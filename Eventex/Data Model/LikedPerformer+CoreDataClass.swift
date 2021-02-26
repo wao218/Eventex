@@ -2,7 +2,7 @@
 //  LikedPerformer+CoreDataClass.swift
 //  Eventex
 //
-//  Created by Wesley Osborne on 2/23/21.
+//  Created by Wesley Osborne on 2/26/21.
 //
 //
 
