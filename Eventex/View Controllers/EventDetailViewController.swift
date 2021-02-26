@@ -14,6 +14,8 @@ class EventDetailViewController: UIViewController {
   
   private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
   public var eventModel: Event?
+  public var likedEventModel: LikedEvent?
+  public var tableView: UITableView?
   private var downloadTask: URLSessionDownloadTask?
 
   private var likedEvents = [LikedEvent]()
@@ -24,13 +26,22 @@ class EventDetailViewController: UIViewController {
   @IBOutlet var eventLocationLabel: UILabel!
   @IBOutlet var eventDateLabel: UILabel!
   @IBOutlet var eventImage: UIImageView!
+  @IBOutlet weak var likeButton: UIBarButtonItem!
   
   @IBAction func didTabMoreDetailsButton() {
-    
+    guard let event = eventModel else {
+      return
+    }
+    if let url = URL(string: event.url) {
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
   }
   
   @IBAction func didTapBackbutton() {
     self.dismiss(animated: true, completion: nil)
+    DispatchQueue.main.async {
+      self.tableView?.reloadData()
+    }
   }
   
   @IBAction func didTapLikeButton(_ sender: AnyObject) {
@@ -45,7 +56,7 @@ class EventDetailViewController: UIViewController {
         managedObjectContext.delete(event)
         do {
           try managedObjectContext.save()
-          sender.setImage(UIImage(systemName: "heart"), for: .normal)
+          likeButton.image = UIImage(systemName: "heart")
         } catch {
           fatalCoreDataError(error)
         }
@@ -65,7 +76,7 @@ class EventDetailViewController: UIViewController {
       
       do {
         try managedObjectContext.save()
-        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        likeButton.image = UIImage(systemName: "heart.fill")
       } catch {
         fatalCoreDataError(error)
       }
@@ -90,6 +101,10 @@ class EventDetailViewController: UIViewController {
     
     if let imageURL = URL(string: event.performers[0].imageURL) {
       downloadTask = eventImage.loadImage(url: imageURL)
+    }
+    
+    if eventExists(id: event.id) {
+      likeButton.image = UIImage(systemName: "heart.fill")
     }
   
   }

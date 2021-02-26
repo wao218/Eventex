@@ -96,12 +96,7 @@ class EventViewController: UIViewController {
         let event = searchResults[row]
         controller.eventModel = event
       }
-      
-      
-      
-//      let event = searchResults[indexPath.row]
-//      controller.title = event.eventTitle
-      
+      controller.tableView = tableView
     }
   }
 }

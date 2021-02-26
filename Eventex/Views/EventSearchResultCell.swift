@@ -15,6 +15,7 @@ class EventSearchResultCell: UITableViewCell {
   private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
   
   private var eventModel: Event?
+  private var likedEventModel: LikedEvent?
   private var likedEvents = [LikedEvent]()
   private var likedVenues = [LikedVenue]()
   private var likedPerformers = [LikedPerformer]()
@@ -104,8 +105,7 @@ class EventSearchResultCell: UITableViewCell {
   // MARK: - Helper Methods
   public func configure(for result: Event) {
     self.eventModel = result
-    // TODO: Check if event is already in liked events
-    // TODO: If it is in Core Data return core data else return api event
+    
     let likeButton = contentView.viewWithTag(101) as! UIButton
     
     if eventExists(id: result.id) {
@@ -118,6 +118,22 @@ class EventSearchResultCell: UITableViewCell {
     eventDateLabel.text = formatDate(date: result.dateTime)
     
     if let imageURL = URL(string: result.performers[0].imageURL) {
+      downloadTask = eventImage.loadImage(url: imageURL)
+    }
+  }
+  
+  public func configureLikedEvents(for likedEvents: LikedEvent, likedPerformers: LikedPerformer, likedVenues: LikedVenue ) {
+    self.likedEventModel = likedEvents
+
+    let likeButton = contentView.viewWithTag(101) as! UIButton
+    likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+    
+    
+    eventTitleLabel.text = likedEvents.eventTitle
+    eventLocationLabel.text = likedVenues.eventLocation
+    eventDateLabel.text = formatDate(date: likedEvents.dateTime)
+    
+    if let imageURL = URL(string: likedPerformers.imageURL) {
       downloadTask = eventImage.loadImage(url: imageURL)
     }
   }

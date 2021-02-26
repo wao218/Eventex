@@ -61,6 +61,35 @@
             </objects>
             <point key="canvasLocation" x="-542" y="949"/>
         </scene>
+        <!--Saved Events Table View Controller-->
+        <scene sceneID="A2Q-m1-1lJ">
+            <objects>
+                <tableViewController id="g63-Ea-6HI" customClass="SavedEventsTableViewController" customModule="Eventex" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TsK-zF-45t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Mfd-bn-8eH">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mfd-bn-8eH" id="3V2-n3-0Fn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="g63-Ea-6HI" id="aoe-X6-fzn"/>
+                            <outlet property="delegate" destination="g63-Ea-6HI" id="PpL-GJ-DiU"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" id="xeu-XN-L9R"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Wy-19-k8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1106" y="949"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YfL-mo-NVr">
             <objects>
@@ -73,6 +102,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="xFs-d7-KWz"/>
+                        <segue destination="g63-Ea-6HI" kind="relationship" relationship="viewControllers" id="kfa-XH-ASW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jay-lV-fJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -123,7 +153,8 @@
                                                 <action selector="didTapBackbutton" destination="OTg-Cl-3lY" id="7zr-ba-Dn1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="Wij-TV-Pis">
+                                        <barButtonItem key="rightBarButtonItem" tag="101" image="heart" catalog="system" id="Wij-TV-Pis">
+                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapLikeButton:" destination="OTg-Cl-3lY" id="S6O-v9-VPI"/>
                                             </connections>
@@ -178,11 +209,12 @@
                         <outlet property="eventImage" destination="GGw-xq-wuW" id="yCi-N1-2UB"/>
                         <outlet property="eventLocationLabel" destination="51h-a0-VHp" id="2Ge-EM-fvN"/>
                         <outlet property="eventTitleLabel" destination="CsA-dU-kqO" id="Gzq-Vr-iN5"/>
+                        <outlet property="likeButton" destination="Wij-TV-Pis" id="AtJ-fm-zlJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29z-YP-oSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925.60000000000002" y="1053.8230884557722"/>
+            <point key="canvasLocation" x="-543" y="1865"/>
         </scene>
     </scenes>
     <resources>
