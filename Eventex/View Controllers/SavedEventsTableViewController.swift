@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class SavedEventsTableViewController: UITableViewController {
   
   private var managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext

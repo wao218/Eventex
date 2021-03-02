@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class EventViewController: UIViewController {
   // MARK: - IBOutlets
   @IBOutlet var searchBar: UISearchBar!
@@ -103,6 +104,7 @@ class EventViewController: UIViewController {
 
 
 // MARK: - Search Bar Delegate
+@available(iOS 13.0, *)
 extension EventViewController: UISearchBarDelegate {
   
   func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -158,6 +160,7 @@ extension EventViewController: UISearchBarDelegate {
 }
 
 // MARK: - Table View Delegate
+@available(iOS 13.0, *)
 extension EventViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if isLoading {

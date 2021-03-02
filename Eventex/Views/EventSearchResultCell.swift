@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class EventSearchResultCell: UITableViewCell {
   // MARK: - Instance Variables
   private var downloadTask: URLSessionDownloadTask?
