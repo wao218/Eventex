@@ -33,3 +33,6 @@ Like and save your favorite events.
 5. Go to Run -> Arguments and under Environment Variables, add 'CLIENTID' for name and your SeatGeek Client ID string for the value.
 6. Click close
 7. Run the app and enjoy!
+
+# Privacy Policy
+This app does not collect any user data.
